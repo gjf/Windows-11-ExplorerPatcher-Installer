@@ -16,6 +16,5 @@ You can check the source in Win11EP.bat (yes, I am so dumb and lazy that I make 
 * 4. If you will start Win11EP WITHOUT dxgi.dll at the same folder - if ExplorerPatcher IS NOT already installed in the system - nothing will happen (obvious, isn't it?)
 
 # Greetings and credits to:
-Valentin-Gabriel Radu for ExplorerPatcher
-Mark Russinovich for MoveFile tool
+Valentin-Gabriel Radu for ExplorerPatcher and Mark Russinovich for MoveFile tool
 

@@ -3,7 +3,7 @@ This tool allows to install/uninstall/update an ExplorerPatcher (dxgi.dll) - a w
 
 Works with both x64 and x32.
 
-You can check the source in Win11EP.bat (yes, I am so dumb and lazy that I make this tool as command-line batch) or simply use compiled and upxed Win11EP.exe.
+You can check the source in Win11EP.bat (yes, I am so dumb and lazy that I make this tool as command-line batch) or simply use compiled Win11EP.exe.
 
 # Does not need any syntax, the logic is as follows:
 

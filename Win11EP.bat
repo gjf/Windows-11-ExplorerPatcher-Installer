@@ -8,10 +8,10 @@ REM Copyrights: @Fixxxer
 REM Trademarks: 
 REM Originalname: Win11EP.exe
 REM Comments: Default action - uninstall. If dxgi.dll exists in the same folder - installs/updates with this file.
-REM Productversion:  1. 0. 0. 0
-REM Fileversion:  1. 0. 0. 0
+REM Productversion:  1. 1. 0. 0
+REM Fileversion:  1. 1. 0. 0
 REM Internalname: Win11EP.exe
-REM ExeType: consoleold
+REM ExeType: ghost
 REM Architecture: x86
 REM Appicon: X:\FIXXXER\11\Win11EP\Icon1.ico
 REM AdministratorManifest: Yes
@@ -26,7 +26,12 @@ if exist %windir%\dxgi.dll (rename %windir%\dxgi.dll dxgi0.dl0)
 if exist %windir%\dxgi0.dl0 if "%xOS%"=="x64" (%MYFILES%\movefile64.exe "%windir%\dxgi0.dl0" "")
 if exist %windir%\dxgi0.dl0 if "%xOS%"=="x86" (%MYFILES%\movefile.exe "%windir%\dxgi0.dl0" "")
 
-if exist dxgi.dll (copy /b /v /y .\dxgi.dll %windir%\dxgi.dll)
+if exist dxgi.dll (copy /b /v /y .\dxgi.dll %windir%\dxgi.dll) else (rd /s /q "%userprofile%\AppData\Roaming\ExplorerPatcher")
 
 reg delete "HKCU\Software\Sysinternals\Movefile" /f
+
+echo X=MsgBox ("! ! ! Everything is fine, now please reboot ! ! !", vbSystemModal+vbApplicationModal) > %MYFILES%\tmp.vbs
+start /wait wscript "%MYFILES%\tmp.vbs"
+del /f /q "%MYFILES%\tmp.vbs"
+
 del %~s0 /q /f

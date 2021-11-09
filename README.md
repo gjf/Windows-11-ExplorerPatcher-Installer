@@ -13,6 +13,8 @@ Win11EP -u uninstalls ExplorerPatcher.
 
 # Greetings and credits to:
 Valentin-Gabriel Radu for ExplorerPatcher
+
 Mark Russinovich for MoveFile tool
+
 Daniel Stenberg for cURL tool
 

@@ -7,7 +7,7 @@ You can check the source in Win11EP.bat (yes, I am so dumb and lazy that I make 
 
 # The syntax is as follows:
 
-Win11EP -i installs or updates ExplorerPatcher. If dxgi,dll exists in the same folder - it will be used otherwise the latest version will be downloaded automatically.
+Win11EP -i installs or updates ExplorerPatcher. If dxgi.dll exists in the same folder - it will be used otherwise the latest version will be downloaded automatically.
 
 Win11EP -u uninstalls ExplorerPatcher.
 

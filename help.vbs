@@ -1,0 +1,1 @@
+X=MsgBox ("No parameters found!" & vbCrLf & "Please use Win11EP -i to install or update " & vbCrLf & "or Win11EP -u to uninstall", vbSystemModal+vbApplicationModal)

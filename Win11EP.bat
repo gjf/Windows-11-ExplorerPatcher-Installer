@@ -7,21 +7,22 @@ REM Filedescription: Installs/ Uninstalls / Updates Win11 ExplorerPatcher
 REM Copyrights: @Fixxxer
 REM Trademarks: 
 REM Originalname: Win11EP.exe
-REM Comments: Default action - uninstall. If dxgi.dll exists in the same folder - installs/updates with this file.
-REM Productversion:  2. 0. 1. 0
-REM Fileversion:  2. 0. 1. 0
+REM Comments: Default action - uninstall. If dxgi.dll or ep_setup.exe exists in the same folder - installs/updates with this file.
+REM Productversion:  3. 0. 0. 0
+REM Fileversion:  3. 0. 0. 0
 REM Internalname: Win11EP.exe
 REM ExeType: ghost
 REM Architecture: x86
-REM Appicon: X:\FIXXXER\11\Win11EP\Icon1.ico
+REM Appicon: E:\Repositories\Windows-11-ExplorerPatcher-Installer\Icon1.ico
 REM AdministratorManifest: Yes
-REM Embeddedfile: X:\FIXXXER\11\Win11EP\movefile.exe
-REM Embeddedfile: X:\FIXXXER\11\Win11EP\movefile64.exe
-REM Embeddedfile: X:\FIXXXER\11\Win11EP\curl.exe
-REM Embeddedfile: X:\FIXXXER\11\Win11EP\curl-ca-bundle.crt
-REM Embeddedfile: X:\FIXXXER\11\Win11EP\libcurl.dll
-REM Embeddedfile: X:\FIXXXER\11\Win11EP\exit.vbs
-REM Embeddedfile: X:\FIXXXER\11\Win11EP\help.vbs
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\RH.exe
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\movefile.exe
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\movefile64.exe
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\curl.exe
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\curl-ca-bundle.crt
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\libcurl.dll
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\exit.vbs
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\help.vbs
 REM  QBFC Project Options End
 @ECHO ON
 set xOS=x64& if "%PROCESSOR_ARCHITECTURE%"=="x86" (if not defined PROCESSOR_ARCHITEW6432 set xOS=x86)
@@ -48,8 +49,10 @@ goto end
 :install
 call :deleteonreboot
 if exist dxgi.dll goto nodownload
-%MYFILES%\curl.exe -L "https://github.com/valinet/ExplorerPatcher/releases/latest/download/dxgi.dll" -o .\dxgi.dll -s
+if exist ep_setup.exe goto nodownload
+%MYFILES%\curl.exe -L "https://github.com/valinet/ExplorerPatcher/releases/latest/download/ep_setup.exe" -o .\ep_setup.exe -s
 :nodownload
+if exist ep_setup.exe call :unpack_exe
 move /y dxgi.dll %windir%\dxgi.new
 if "%xOS%"=="x64" (%MYFILES%\movefile64.exe "%windir%\dxgi.new" "dxgi.dll")
 if "%xOS%"=="x86" (%MYFILES%\movefile.exe "%windir%\dxgi.new" "dxgi.dll")
@@ -64,6 +67,12 @@ goto finish
 if exist %windir%\dxgi.dll (move /y %windir%\dxgi.dll %windir%\%name%.old)
 if exist %windir%\%name%.old if "%xOS%"=="x64" (%MYFILES%\movefile64.exe "%windir%\%name%.old" "")
 if exist %windir%\%name%.old if "%xOS%"=="x86" (%MYFILES%\movefile.exe "%windir%\%name%.old" "")
+exit /B 0
+
+:unpack_exe
+%MYFILES%\RH.exe -open ep_setup.exe -save dxgi.dll -action extract -mask RCData,103, -log NUL )
+del .\ep_setup.exe /q /f
+del %MYFILES%\RH.ini /q /f
 exit /B 0
 
 :finish

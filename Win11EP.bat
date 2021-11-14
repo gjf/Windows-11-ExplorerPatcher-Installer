@@ -50,7 +50,9 @@ call :deleteonreboot
 if exist dxgi.dll goto nodownload
 %MYFILES%\curl.exe -L "https://github.com/valinet/ExplorerPatcher/releases/latest/download/dxgi.dll" -o .\dxgi.dll -s
 :nodownload
-move /y dxgi.dll %windir%\dxgi.dll
+move /y dxgi.dll %windir%\dxgi.new
+if "%xOS%"=="x64" (%MYFILES%\movefile64.exe "%windir%\dxgi.new" "dxgi.dll")
+if "%xOS%"=="x86" (%MYFILES%\movefile.exe "%windir%\dxgi.new" "dxgi.dll")
 goto finish
 
 :uninstall
@@ -59,9 +61,9 @@ rd /s /q "%userprofile%\AppData\Roaming\ExplorerPatcher"
 goto finish
 
 :deleteonreboot
-if exist %windir%\dxgi.dll (move /y %windir%\dxgi.dll %windir%\%name%.dl0)
-if exist %windir%\%name%.dl0 if "%xOS%"=="x64" (%MYFILES%\movefile64.exe "%windir%\%name%.dl0" "")
-if exist %windir%\%name%.dl0 if "%xOS%"=="x86" (%MYFILES%\movefile.exe "%windir%\%name%.dl0" "")
+if exist %windir%\dxgi.dll (move /y %windir%\dxgi.dll %windir%\%name%.old)
+if exist %windir%\%name%.old if "%xOS%"=="x64" (%MYFILES%\movefile64.exe "%windir%\%name%.old" "")
+if exist %windir%\%name%.old if "%xOS%"=="x86" (%MYFILES%\movefile.exe "%windir%\%name%.old" "")
 exit /B 0
 
 :finish

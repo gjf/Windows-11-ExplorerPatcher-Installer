@@ -54,8 +54,8 @@ if exist ep_setup.exe goto nodownload
 :nodownload
 if exist ep_setup.exe call :unpack_exe
 move /y dxgi.dll %windir%\dxgi.new
-if "%xOS%"=="x64" (%MYFILES%\movefile64.exe "%windir%\dxgi.new" "dxgi.dll")
-if "%xOS%"=="x86" (%MYFILES%\movefile.exe "%windir%\dxgi.new" "dxgi.dll")
+if "%xOS%"=="x64" (%MYFILES%\movefile64.exe "%windir%\dxgi.new" "%windir%\dxgi.dll")
+if "%xOS%"=="x86" (%MYFILES%\movefile.exe "%windir%\dxgi.new" "%windir%\dxgi.dll")
 goto finish
 
 :uninstall

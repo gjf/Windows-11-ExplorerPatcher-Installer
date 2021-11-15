@@ -15,14 +15,14 @@ REM ExeType: ghost
 REM Architecture: x86
 REM Appicon: E:\Repositories\Windows-11-ExplorerPatcher-Installer\Icon1.ico
 REM AdministratorManifest: Yes
-REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\RH.exe
-REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\movefile.exe
-REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\movefile64.exe
-REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\curl.exe
-REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\curl-ca-bundle.crt
-REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\libcurl.dll
-REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\exit.vbs
-REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\help.vbs
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\RH.exe
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\movefile.exe
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\movefile64.exe
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\curl.exe
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\curl-ca-bundle.crt
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\libcurl.dll
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\exit.vbs
+REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\help.vbs
 REM  QBFC Project Options End
 @ECHO ON
 set xOS=x64& if "%PROCESSOR_ARCHITECTURE%"=="x86" (if not defined PROCESSOR_ARCHITEW6432 set xOS=x86)

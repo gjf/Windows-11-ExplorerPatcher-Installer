@@ -21,5 +21,3 @@ Valentin-Gabriel Radu for ExplorerPatcher
 Mark Russinovich for MoveFile tool
 
 Daniel Stenberg for cURL tool
-
-Angus Johnson for Resource Hacker

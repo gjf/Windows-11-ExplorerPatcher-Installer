@@ -8,14 +8,13 @@ REM Copyrights: @Fixxxer
 REM Trademarks: 
 REM Originalname: Win11EP.exe
 REM Comments: Default action - uninstall. If dxgi.dll or ep_setup.exe exists in the same folder - installs/updates with this file.
-REM Productversion:  3. 0. 0. 0
-REM Fileversion:  3. 0. 0. 0
+REM Productversion:  3. 1. 0. 0
+REM Fileversion:  3. 1. 0. 0
 REM Internalname: Win11EP.exe
 REM ExeType: ghost
 REM Architecture: x86
 REM Appicon: E:\Repositories\Windows-11-ExplorerPatcher-Installer\Icon1.ico
 REM AdministratorManifest: Yes
-REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\RH.exe
 REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\movefile.exe
 REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\movefile64.exe
 REM Embeddedfile: E:\Repositories\Windows-11-ExplorerPatcher-Installer\MYFILES\curl.exe
@@ -70,9 +69,12 @@ if exist %windir%\%name%.old if "%xOS%"=="x86" (%MYFILES%\movefile.exe "%windir%
 exit /B 0
 
 :unpack_exe
-%MYFILES%\RH.exe -open ep_setup.exe -save dxgi.dll -action extract -mask RCData,103, -log NUL )
+rem %MYFILES%\RH.exe -open ep_setup.exe -save dxgi.dll -action extract -mask RCData,103, -log NUL )
+ep_setup.exe /extract %MYFILES%
 del .\ep_setup.exe /q /f
-del %MYFILES%\RH.ini /q /f
+rem del %MYFILES%\RH.ini /q /f
+if "%xOS%"=="x64" (move /y "%MYFILES%\ExplorerPatcher.amd64.dll" ".\dxgi.dll")
+if "%xOS%"=="x86" (move /y "%MYFILES%\ExplorerPatcher.IA-32.dll" ".\dxgi.dll")
 exit /B 0
 
 :finish

@@ -8,8 +8,8 @@ REM Copyrights: @Fixxxer
 REM Trademarks: 
 REM Originalname: Win11EP.exe
 REM Comments: Default action - uninstall. If dxgi.dll or ep_setup.exe exists in the same folder - installs/updates with this file.
-REM Productversion:  3. 1. 0. 0
-REM Fileversion:  3. 1. 0. 0
+REM Productversion:  3. 1. 1. 0
+REM Fileversion:  3. 1. 1. 0
 REM Internalname: Win11EP.exe
 REM ExeType: ghost
 REM Architecture: x86
@@ -60,6 +60,7 @@ goto finish
 :uninstall
 call :deleteonreboot
 rd /s /q "%userprofile%\AppData\Roaming\ExplorerPatcher"
+reg delete "HKEY_CURRENT_USER\Software\ExplorerPatcher" /f
 goto finish
 
 :deleteonreboot
